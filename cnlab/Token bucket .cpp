@@ -1,4 +1,11 @@
+#include <bits/stdc++.h>
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
 #include <iostream>
+#include <cstdlib>
 #include <chrono>
 #include <thread>
 
@@ -55,8 +62,9 @@ int main() {
     int packet = 0;
 
     while (true) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(200));
-        throttle.handle(packet);
-        packet += 1;
+        Sleep(1000);
+    throttle.handle(packet);
+    packet++;
+
     }
 }
