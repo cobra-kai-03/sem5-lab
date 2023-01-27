@@ -1,6 +1,7 @@
+
+
 import math
- 
- 
+
 def gcd(a, h):
     temp = 0
     while(1):
@@ -11,8 +12,8 @@ def gcd(a, h):
         h = temp
  
  
-p = int(input('Enter a number  '))
-q = int(input('Enter a number '))
+p = int(input('Enter a prime number  '))
+q = int(input('Enter a prime number '))
 n = p*q
 e = 2
 phi = (p-1)*(q-1)
@@ -30,8 +31,18 @@ while (e < phi):
 # choosing d such that it satisfies
 # d*e = 1 + k * totient
  
-k = 2
-d = (1 + (k*phi))/e
+# k = 2
+# d=0
+# while():
+#     d=(1+(k*phi))
+#     if(d%e==0):
+#         d=d/e
+#         break
+d=0
+for k in range(1,phi):
+    if((k*e)%phi==1):
+        d=k
+        break
  
 # Message to be encrypted
 msg = int(input('Enter a message  '))
@@ -40,10 +51,10 @@ print("Message data = ", msg)
  
 # Encryption c = (msg ^ e) % n
 c = pow(msg, e)
-c = math.fmod(c, n)
+c = c%n
 print("Encrypted data = ", c)
  
 # Decryption m = (c ^ d) % n
 m = pow(c, d)
-m = math.fmod(m, n)
+m = m%n
 print("Original Message Sent = ", m)
